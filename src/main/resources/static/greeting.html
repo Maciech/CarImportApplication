@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting Result</title>
+</head>
+<body>
+<h1>Greeting Result</h1>
+<div id="result"></div>
+
+<script>
+    // Extracting the 'name' parameter from the URL query string
+    var urlParams = new URLSearchParams(window.location.search);
+    var name = urlParams.get('name');
+
+    // Displaying the greeting result in the HTML page
+    var resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "Hello, " + name + "!";
+  </script>
+</body>
+</html>
