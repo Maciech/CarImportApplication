@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Register</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
           integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,9 +12,6 @@
         <legend>A compact inline form</legend>
         <input id="email" type="email"  placeholder="Email" />
         <input id="password" type="password" placeholder="Password" />
-        <label for="default-remember">
-            <input type="checkbox" id="default-remember" /> Remember me
-        </label>
         <button onclick="assignValue()">Sign in</button>
     </fieldset>
 </form>
@@ -40,6 +37,6 @@ function assignValue() {
   xhr.send(JSON.stringify(login));
   }
   </script>
-<p>Don't have an account? <a href="register.html">Register here</a></p>
+<p>Don't have an account? <a href="/register">Register here</a></p>
 </body>
 </html>

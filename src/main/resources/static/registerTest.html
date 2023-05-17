@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+          integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<!--<h1>Register form Result</h1>-->
+<!--<div id="register"></div>-->
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="aligned-name">Username</label>
+            <input  type="text" id="aligned-name" placeholder="Username" />
+            <span class="pure-form-message-inline">This is a required field.</span>
+        </div>
+        <div class="pure-control-group">
+            <label for="aligned-password">Password</label>
+            <input type="password" id="aligned-password" placeholder="Password" />
+        </div>
+        <div class="pure-control-group">
+            <label for="aligned-email">Email Address</label>
+            <input type="email" id="aligned-email" placeholder="Email Address" />
+        </div>
+        <div class="pure-control-group">
+            <label for="aligned-foo">Supercalifragilistic Label</label>
+            <input type="text" id="aligned-foo" placeholder="Enter something here..." />
+        </div>
+        <div class="pure-controls">
+            <label for="aligned-cb" class="pure-checkbox">
+                <input type="checkbox" id="aligned-cb" /> I have read the terms and conditions
+            </label>
+            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        </div>
+    </fieldset>
+</form>
+<script>
+    var urlParams = new URLSearchParams(window.location.search);
+
+    // Displaying the greeting result in the HTML page
+  //  var resultDiv = document.getElementById("result");
+   // resultDiv.innerHTML = "Hello, " + name + "!";
+  </script>
+<p>Already have an account? <a href="/login">Login here</a></p>
+</body>
+</html>
