@@ -1,0 +1,13 @@
+package com.example.demo;
+
+abstract public class PersonalData {
+    String name;
+    String surname;
+    String email;
+    String password;
+    String login;
+    String address;
+    String zipCode;
+    int moneyToInvest;
+
+}
