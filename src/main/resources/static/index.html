@@ -1,22 +1,24 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="pl">
 <head>
+    <meta charset="UTF-8">
     <title>Getting Started: Serving Web Content</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
           integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="register_V1.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+// class="pure-form"
 <body>
-<form onsubmit="event.preventDefault();" class="pure-form">
-    <fieldset>
-        <legend>A compact inline form</legend>
-        <input id="email" type="email"  placeholder="Email" />
-        <input id="password" type="password" placeholder="Password" />
+<h1>Logowanie do systemu</h1>
+<form id="registrationForm" onsubmit="event.preventDefault();">
+        <input id="email" type="email"  placeholder="Adres e-mail" required/><br>
+        <input id="password" type="password" placeholder="Hasło" required/><br>
         <label for="default-remember">
-            <input type="checkbox" id="default-remember" /> Remember me
+            <input type="checkbox" id="default-remember" /> Remember me<br>
         </label>
-        <button onclick="assignValue()">Sign in</button>
-    </fieldset>
+        <button type="submit" onclick="assignValue()">Zaloguj</button><br>
+        <p>Nie masz konta? <a href="register_V1.html">Utwórz je tutaj</a></p>
 </form>
 <script>
 function assignValue() {
@@ -40,6 +42,5 @@ function assignValue() {
   xhr.send(JSON.stringify(login));
   }
   </script>
-<p>Don't have an account? <a href="register.html">Register here</a></p>
 </body>
 </html>

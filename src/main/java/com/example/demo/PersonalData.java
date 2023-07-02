@@ -1,6 +1,6 @@
 package com.example.demo;
 
-abstract public class PersonalData {
+public abstract class PersonalData {
     String name;
     String surname;
     String email;

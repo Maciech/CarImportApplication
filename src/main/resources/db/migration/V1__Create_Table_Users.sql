@@ -1,8 +1,10 @@
 CREATE TABLE USERS (
-    UserID INT PRIMARY KEY AUTO_INCREMENT,
-    UserNickName VARCHAR(15) NOT NULL,
-    UserMail VARCHAR(20) NOT NULL,
-    UserName VARCHAR(15) NOT NULL,
-    UserSurname VARCHAR(15) NOT NULL,
-    City VARCHAR(15)
+    userid INT PRIMARY KEY AUTO_INCREMENT,
+    usernickname VARCHAR(15) NOT NULL,
+    userpassword VARCHAR(15) NOT NULL,
+    usermail VARCHAR(20) NOT NULL,
+    username VARCHAR(15) NOT NULL,
+    usersurname VARCHAR(15) NOT NULL,
+    country VARCHAR(15) NOT NULL,
+    city VARCHAR(15) NOT NULL
 );

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+          integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="register_V1.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+
+    </style>
+</head>
+<body>
+<h1>Rejestracja użytkownika</h1>
+<form id="registrationForm" onsubmit="event.preventDefault();">
+    <input type="text" id="userNickName" name="userNickName" required placeholder="Nick użytkownika"><br>
+
+    <input type="password" id="userPassword" name="userPassword" required placeholder="Hasło"><br>
+
+    <input type="email" id="userMail" name="userMail" required placeholder="Adres e-mail"><br>
+
+    <input type="text" id="userName" name="userName" required placeholder="Imię"><br>
+
+    <input type="text" id="userSurname" name="userSurname" required placeholder="Nazwisko"><br>
+
+    <input type="text" id="country" name="country" required placeholder="Kraj"><br>
+
+    <input type="text" id="city" name="city" required placeholder="Miasto"><br>
+
+
+    <button type="submit">Zarejestruj</button>
+
+        <p>Masz już konto? <a href="/">Zaloguj się tutaj</a></p>
+
+</form>
+
+<script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Zatrzymuje domyślne przesłanie formularza
+
+            // Pobierz dane z formularza
+            var userNickName = document.getElementById("userNickName").value;
+            var userPassword = document.getElementById("userPassword").value;
+            var userMail = document.getElementById("userMail").value;
+            var userName = document.getElementById("userName").value;
+            var userSurname = document.getElementById("userSurname").value;
+            var country = document.getElementById("country").value;
+            var city = document.getElementById("city").value;
+
+            // Utwórz obiekt z danymi rejestracji
+            var registerData = {
+                userNickName: userNickName,
+                userPassword: userPassword,
+                userMail: userMail,
+                userName: userName,
+                userSurname: userSurname,
+                country: country,
+                city: city
+            };
+
+            if (validateForm()) {
+
+
+            // Wyślij żądanie rejestracji do kontrolera
+            fetch("/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(registerData)
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error("Błąd podczas rejestracji.");
+            })
+            .then(function(responseText) {
+                alert(responseText); // Wyświetl odpowiedź z serwera
+                // Możesz dodać przekierowanie lub dodatkową logikę po pomyślnej rejestracji
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+            }
+            //location.href="/";
+        });
+
+        function validateForm() {
+  var userNickName = document.getElementById("userNickName").value;
+  var userPassword = document.getElementById("userPassword").value;
+  var userMail = document.getElementById("userMail").value;
+  var userName = document.getElementById("userName").value;
+  var userSurname = document.getElementById("userSurname").value;
+  var country = document.getElementById("country").value;
+  var city = document.getElementById("city").value;
+
+  if (userNickName === "" || userPassword === "" || userMail === "" ||
+        userName === "" || userSurname === "" || country === "" || city === "") {
+        alert("Please fill in all the required fields.");
+        return false;
+  }
+        return true;
+}
+
+    </script>
+</body>
+</html>

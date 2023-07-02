@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public class Login {
+public class Login{
     private String email;
     private String password;
 
