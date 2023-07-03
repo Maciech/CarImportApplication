@@ -13,13 +13,13 @@
 <body>
 <h1>Rejestracja użytkownika</h1>
 <form id="registrationForm" onsubmit="event.preventDefault();">
-    <input type="text" id="userNickName" name="userNickName" required placeholder="Nick użytkownika" minlength="5" maxlength="10"><br>
+    <input type="text" id="userNickName" name="userNickName" required placeholder="Nick użytkownika" minlength="6" maxlength="15"><br>
 
-    <input type="password" id="userPassword" name="userPassword" required placeholder="Hasło" minlength="5" maxlength="10"><br>
+    <input type="password" id="userPassword" name="userPassword" required placeholder="Hasło" minlength="8" maxlength="15"><br>
 
     <input type="email" id="userMail" name="userMail" required placeholder="Adres e-mail"><br>
 
-    <input type="text" id="userName" name="userName" required placeholder="Imię" minlength="5" maxlength="10"><br>
+    <input type="text" id="userName" name="userName" required placeholder="Imię" minlength="5" maxlength="15"><br>
 
     <input type="text" id="userSurname" name="userSurname" required placeholder="Nazwisko"><br>
 
@@ -78,12 +78,15 @@
             .then(function(responseText) {
                 alert(responseText); // Wyświetl odpowiedź z serwera
                 // Możesz dodać przekierowanie lub dodatkową logikę po pomyślnej rejestracji
+                if (response == "Zarejestrowano pomyślnie"){
+                window.location.href="/";
+                }
             })
             .catch(function(error) {
                 console.error(error);
             });
             }
-            //location.href="/";
+
         });
 
         function validateForm() {

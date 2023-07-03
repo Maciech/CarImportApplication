@@ -7,12 +7,14 @@
           integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
     <link rel="stylesheet" href="register_V1.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+
+    </style>
 </head>
-// class="pure-form"
 <body>
 <h1>Logowanie do systemu</h1>
 <form action="/login" method="post" id="registrationForm" onsubmit="event.preventDefault();">
-        <input id="userMail" type="email"  placeholder="Adres e-mail" required/><br>
+        <input id="userMail" type="email" placeholder="Adres e-mail" required/><br>
         <input id="userPassword" type="password" placeholder="Hasło" required/><br>
         <label for="default-remember">
             <input type="checkbox" id="default-remember" /> Remember me<br>
@@ -20,13 +22,15 @@
         <button type="submit" onclick="assignValue()">Zaloguj</button><br>
         <p>Nie masz konta? <a href="register_V1.html">Utwórz je tutaj</a></p>
 </form>
+<div class="container">
+    <div class="frame">
+        <p>Witaj! Czy kiedykolwiek marzyłeś o posiadaniu swojego wymarzonego samochodu prosto ze Stanów Zjednoczonych? Teraz to możliwe dzięki naszemu innowacyjnemu systemowi wspomagającemu sprowadzanie samochodów!</p>
+        <p>Nasza platforma oferuje Ci łatwy, niezawodny i bezpieczny sposób na sprowadzenie samochodu z USA. Dzięki naszym doświadczonym ekspertom i kompleksowym narzędziom, możemy zapewnić Ci pełne wsparcie na każdym etapie procesu.</p>
+
+    </div>
+</div>
+
 <script>
-window.onload = function() {
-            var message = decodeURIComponent('{{ message }}');
-            if (message) {
-                alert(message);
-            }
-        };
 
 function assignValue() {
   var userMail = document.getElementById("userMail");
@@ -50,7 +54,9 @@ function assignValue() {
         // Wyświetl alert lub wykonaj inne działania na podstawie odpowiedzi
         alert(response);
         // Przekieruj użytkownika do innej strony
-        window.location.href = "/register_V1";
+        if (response == "Zalogowano pomyślnie"){
+        window.location.href = "/welcomePage_V2.html";
+        }
       } else {
         console.error("Failed to send value to the Java backend");
       }

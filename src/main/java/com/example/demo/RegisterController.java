@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -27,9 +28,9 @@ public class RegisterController {
             registerRepository.save(register);
 
             String alertMessage = "Rejestracja zakończona sukcesem!";
-            String redirectUrl = "/welcomePage_V1";
 
-            return "redirect:" + redirectUrl + "?message=" + URLEncoder.encode(alertMessage, StandardCharsets.UTF_8);
+
+            return alertMessage;
         }
 
     }
@@ -42,16 +43,23 @@ public class RegisterController {
 
         if (validation) {
             // Użytkownik istnieje, wykonaj odpowiednie akcje, np. zaloguj go
-            System.out.println("welhu");
-            return "redirect:/welcomePage_V1";
+            return "Zalogowano pomyślnie";
         } else {
             // Użytkownik nie istnieje, wyświetl odpowiedni komunikat błędu
             return "Nieprawidłowy login lub hasło";
         }
+    }
+   // @GetMapping("/")
+    public RedirectView redirectToWelcomePage() {
+        // Przekierowanie na inny adres
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/welcomePage_V2.html"); // Adres, na który zostanie przekierowana strona
+        return redirectView;
     }
 
     @GetMapping("/welcomePage_V1")
     public String welcomePage() {
         return "welcomePage";
     }
+
 }

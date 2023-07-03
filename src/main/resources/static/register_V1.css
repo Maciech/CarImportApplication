@@ -35,3 +35,23 @@ h1 {
 text-align: center;
 background-color: #f2f2f2;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-height: 120vh;
+
+  position: relative;
+  bottom: -200px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.frame {
+  border: 2px solid black;
+  padding: 20px;
+  text-align: center;
+}
