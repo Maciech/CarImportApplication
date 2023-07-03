@@ -32,6 +32,10 @@ public class Register {
     @Column(name = "city")
     private String City;
 
+    public Register() {
+    }
+
+
     public int getUserId() {
         return userId;
     }

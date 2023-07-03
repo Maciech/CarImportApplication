@@ -13,13 +13,13 @@
 <body>
 <h1>Rejestracja użytkownika</h1>
 <form id="registrationForm" onsubmit="event.preventDefault();">
-    <input type="text" id="userNickName" name="userNickName" required placeholder="Nick użytkownika"><br>
+    <input type="text" id="userNickName" name="userNickName" required placeholder="Nick użytkownika" minlength="5" maxlength="10"><br>
 
-    <input type="password" id="userPassword" name="userPassword" required placeholder="Hasło"><br>
+    <input type="password" id="userPassword" name="userPassword" required placeholder="Hasło" minlength="5" maxlength="10"><br>
 
     <input type="email" id="userMail" name="userMail" required placeholder="Adres e-mail"><br>
 
-    <input type="text" id="userName" name="userName" required placeholder="Imię"><br>
+    <input type="text" id="userName" name="userName" required placeholder="Imię" minlength="5" maxlength="10"><br>
 
     <input type="text" id="userSurname" name="userSurname" required placeholder="Nazwisko"><br>
 

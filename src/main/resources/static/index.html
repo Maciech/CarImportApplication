@@ -11,9 +11,9 @@
 // class="pure-form"
 <body>
 <h1>Logowanie do systemu</h1>
-<form id="registrationForm" onsubmit="event.preventDefault();">
-        <input id="email" type="email"  placeholder="Adres e-mail" required/><br>
-        <input id="password" type="password" placeholder="Hasło" required/><br>
+<form action="/login" method="post" id="registrationForm" onsubmit="event.preventDefault();">
+        <input id="userMail" type="email"  placeholder="Adres e-mail" required/><br>
+        <input id="userPassword" type="password" placeholder="Hasło" required/><br>
         <label for="default-remember">
             <input type="checkbox" id="default-remember" /> Remember me<br>
         </label>
@@ -21,22 +21,39 @@
         <p>Nie masz konta? <a href="register_V1.html">Utwórz je tutaj</a></p>
 </form>
 <script>
+window.onload = function() {
+            var message = decodeURIComponent('{{ message }}');
+            if (message) {
+                alert(message);
+            }
+        };
+
 function assignValue() {
-  var email = document.getElementById("email");
-  var password = document.getElementById("password");
-   console.log("Value: " + email + " " + password);
+  var userMail = document.getElementById("userMail");
+  var userPassword = document.getElementById("userPassword");
+   console.log("Value: " + userMail + " " + userPassword);
 
   var login = {
-        email: email.value,
-        password: password.value
+        userMail: userMail.value,
+        userPassword: userPassword.value
       };
 
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/login", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-      console.log("Value sent to the Java backend successfully");
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        console.log("Value sent to the Java backend successfully");
+        var response = xhr.responseText; // Odpowiedź z serwera
+        console.log("Response: " + response);
+        // Wyświetl alert lub wykonaj inne działania na podstawie odpowiedzi
+        alert(response);
+        // Przekieruj użytkownika do innej strony
+        window.location.href = "/register_V1";
+      } else {
+        console.error("Failed to send value to the Java backend");
+      }
     }
   };
   xhr.send(JSON.stringify(login));
