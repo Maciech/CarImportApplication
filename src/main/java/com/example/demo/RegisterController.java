@@ -16,7 +16,6 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(@RequestBody Register register) {
-
         //Odczyt z bazy czy rekordy juz istnieja
         boolean userMailExist = registerRepository.existsByUserMail(register.getUserMail());
         boolean userNickNameExist = registerRepository.existsByUserNickName(register.getUserNickName());
@@ -26,10 +25,7 @@ public class RegisterController {
             return ("Podany login lub email jest już zarejestrowany.");
         } else {
             registerRepository.save(register);
-
             String alertMessage = "Rejestracja zakończona sukcesem!";
-
-
             return alertMessage;
         }
 
