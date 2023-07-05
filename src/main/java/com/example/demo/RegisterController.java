@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -21,7 +22,7 @@ public class RegisterController {
         boolean userNickNameExist = registerRepository.existsByUserNickName(register.getUserNickName());
 
         // Zapis danych do bazy
-        if (userMailExist || userNickNameExist){
+        if (userMailExist || userNickNameExist) {
             return ("Podany login lub email jest już zarejestrowany.");
         } else {
             registerRepository.save(register);
@@ -30,6 +31,7 @@ public class RegisterController {
         }
 
     }
+
     @PostMapping("/login")
     public String login(@RequestBody Login login) {
         // Sprawdź, czy użytkownik o podanej nazwie użytkownika i haśle istnieje w bazie danych
@@ -45,7 +47,8 @@ public class RegisterController {
             return "Nieprawidłowy login lub hasło";
         }
     }
-   // @GetMapping("/")
+
+    // @GetMapping("/")
     public RedirectView redirectToWelcomePage() {
         // Przekierowanie na inny adres
         RedirectView redirectView = new RedirectView();
@@ -53,9 +56,25 @@ public class RegisterController {
         return redirectView;
     }
 
+
     @GetMapping("/welcomePage_V1")
     public String welcomePage() {
         return "welcomePage";
     }
 
+    // @GetMapping("/calculator")
+    // public String example(@RequestBody Calculator calculator, Model model) {
+    //     double value = calculator.getCarBid();
+    //     model.addAttribute("doubleValue", value);
+    //     model.addAttribute("doubleValueOutput", value);
+    //     return "example"; // Nazwa widoku HTML
+    // }
+
+    @GetMapping("/calculator")
+    public String welcomePage(Model model) {
+        double doubleValue = 3.14; // Przykładowa wartość double
+        model.addAttribute("doubleValue", doubleValue); // Przekazanie wartości do modelu
+
+        return "calculator";
+    }
 }
