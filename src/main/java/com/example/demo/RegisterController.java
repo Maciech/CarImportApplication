@@ -1,11 +1,14 @@
 package com.example.demo;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class RegisterController {
@@ -70,11 +73,16 @@ public class RegisterController {
     //     return "example"; // Nazwa widoku HTML
     // }
 
-    @GetMapping("/calculator")
-    public String welcomePage(Model model) {
-        double doubleValue = 3.14; // Przykładowa wartość double
-        model.addAttribute("doubleValue", doubleValue); // Przekazanie wartości do modelu
+    @PostMapping("/calculator")
+    public ResponseEntity<Map<String, String>> getValue(@RequestBody Map<String, String> requestData) throws Exception {
+        String myFieldValue = requestData.get("carBid");
+        System.out.println(myFieldValue);
 
-        return "calculator";
+        // Tworzenie odpowiedzi JSON
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Sukces");
+
+        // Zwróć odpowiedź JSON do klienta
+        return ResponseEntity.ok(response);
     }
 }

@@ -35,10 +35,11 @@
     <h1>Wartość double: <span id="doubleValueSpan" th:text="${doubleValue}"></span></h1>
     <div>
         <form id="myForm">
-            <label for="doubleValueInput">Podaj wartość double:</label>
-            <input type="text" id="doubleValueInput" placeholder="Wpisz wartość" />
+            <label for="carBid">Podaj wartość licytowaną:</label>
+            <input type="text" id="carBid" placeholder="Car bid value" name="carBid" />
+            <input type="text" id="carTransport" placeholder="Car bid value" name="carTransport" />
             <br />
-            <output id="doubleValueOutput"></output>
+            <button type="button" onclick="sendData()">Wyślij</button>
         </form>
     </div>
 
@@ -48,33 +49,35 @@
     </div>
 </div>
 <script>
-    // Pobierz dane z formularza
-//           var carBid = document.getElementById("carBid").value;
-//           var carLocation = document.getElementById("carLocation").value;
-//           var carCapacityExceeded = document.getElementById("carCapacityExceeded").value;
-//           var calculatedValue;
+    function sendData() {
+        var carBid = document.getElementById('carBid');
+        var carTransport = document.getElementById('carTransport');
+        var carBidValue = carBid.value;
+        var carTransportValue = carTransport.value;
 
-//           // Utwórz obiekt z danymi rejestracji
-//           var calculation = {
-//               carBid: carBid,
-//               carLocation: carLocation,
-//               carCapacityExceeded: carCapacityExceeded,
-//           };
-
-  // Obsługa zdarzenia wysłania formularza
-     document.getElementById("myForm").addEventListener("submit", function(event)  {
-      event.preventDefault(); // Zatrzymanie domyślnego działania formularza
-
-      // Pobranie wartości z pola tekstowego
-      var inputValue = document.getElementById("doubleValueInput").value;
-
-      // Konwersja wartości na typ double
-    //  var doubleValue = parseFloat(inputValue);
-          console.log('Wartość double:', doubleValue);
-      // Aktualizacja wartości output
-    //  var doubleValueOutput = document.getElementById("doubleValueOutput");
-      doubleValueOutput.innerHTML = doubleValue.toString();
-    });
+        fetch('/calculator', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ carBid: carBidValue })
+        })
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Błąd podczas przetwarzania danych.');
+            }
+        })
+        .then(function(data) {
+            // Obsługa odpowiedzi z serwera
+            console.log(data);
+        })
+        .catch(function(error) {
+            // Obsługa błędów
+            console.error(error);
+        });
+    }
 </script>
 </body>
 </html>
